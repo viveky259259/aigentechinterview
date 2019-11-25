@@ -1,0 +1,5 @@
+enum FuelType{
+  DIESEL,
+  PETROL
+
+}
