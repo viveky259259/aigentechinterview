@@ -1,10 +1,9 @@
 import 'package:aigen_tech_test/ad/ad.model.dart';
 import 'package:aigen_tech_test/ad/ad.widget.dart';
-import 'package:aigen_tech_test/model/car.model.dart';
 import 'package:aigen_tech_test/interfaces/i.adui.helper.dart';
+import 'package:aigen_tech_test/model/car.model.dart';
 import 'package:aigen_tech_test/model/fueltype.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'ad.details.ui.dart';
 
@@ -54,14 +53,16 @@ class _AdUiState extends State<AdUi> {
             FuelType.PETROL,
             120000,
             ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black"),
+            "black",
+            4,
+            false),
         "80808080",
         "Boriwali (East)",
         isSelf: widget.isSelf));
     ads.add(AdModel(
         1,
         "car",
-        "This is car",
+        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
         CarModel(
             4,
             "maruti",
@@ -73,14 +74,37 @@ class _AdUiState extends State<AdUi> {
             FuelType.DIESEL,
             120000,
             ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black"),
-        "Boriwali (East)",
+            "black",
+            4,
+            false),
         "80808080",
+        "Boriwali (East)",
         isSelf: widget.isSelf));
     ads.add(AdModel(
         1,
         "car",
-        "This is car",
+        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
+        CarModel(
+            4,
+            "maruti",
+            "8100D",
+            2010,
+            2011,
+            1200,
+            24.2,
+            FuelType.DIESEL,
+            120000,
+            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+            "black",
+            4,
+            false),
+        "80808080",
+        "Boriwali (East)",
+        isSelf: widget.isSelf));
+    ads.add(AdModel(
+        1,
+        "car",
+        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
         CarModel(
             4,
             "maruti",
@@ -90,16 +114,18 @@ class _AdUiState extends State<AdUi> {
             1200,
             24.2,
             FuelType.PETROL,
-            134000,
+            120000,
             ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black"),
-        "Boriwali (East)",
+            "black",
+            4,
+            false),
         "80808080",
+        "Boriwali (East)",
         isSelf: widget.isSelf));
     ads.add(AdModel(
         1,
         "car",
-        "This is car",
+        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
         CarModel(
             4,
             "maruti",
@@ -109,16 +135,39 @@ class _AdUiState extends State<AdUi> {
             1200,
             24.2,
             FuelType.DIESEL,
-            121212,
+            120000,
             ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black"),
-        "Boriwali (East)",
+            "black",
+            4,
+            false),
         "80808080",
+        "Boriwali (East)",
         isSelf: widget.isSelf));
     ads.add(AdModel(
         1,
         "car",
-        "This is car",
+        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
+        CarModel(
+            4,
+            "maruti",
+            "8100D",
+            2010,
+            2011,
+            1200,
+            24.2,
+            FuelType.DIESEL,
+            120000,
+            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+            "black",
+            4,
+            false),
+        "80808080",
+        "Boriwali (East)",
+        isSelf: widget.isSelf));
+    ads.add(AdModel(
+        1,
+        "car",
+        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
         CarModel(
             4,
             "maruti",
@@ -128,49 +177,13 @@ class _AdUiState extends State<AdUi> {
             1200,
             24.2,
             FuelType.PETROL,
-            1212,
+            120000,
             ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black"),
-        "Boriwali (East)",
-        "80808080",
-        isSelf: widget.isSelf));
-    ads.add(AdModel(
-        1,
-        "car",
-        "This is car",
-        CarModel(
+            "black",
             4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.DIESEL,
-            12122121,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black"),
-        "Boriwali (East)",
+            false),
         "80808080",
-        isSelf: widget.isSelf));
-    ads.add(AdModel(
-        1,
-        "car",
-        "This is car",
-        CarModel(
-            4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.DIESEL,
-            10000,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black"),
         "Boriwali (East)",
-        "80808080",
         isSelf: widget.isSelf));
     setState(() {
       isLoading = false;
@@ -259,7 +272,7 @@ class _AdUiState extends State<AdUi> {
                   child: GridView.builder(
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, childAspectRatio: 0.9),
+                        crossAxisCount: 2, childAspectRatio: 0.85),
                     padding: EdgeInsets.all(4),
                     itemCount: ads.length,
                     itemBuilder: (context, index) {

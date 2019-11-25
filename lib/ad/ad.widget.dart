@@ -11,7 +11,7 @@ class AdWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         onItemClick(_adModel);
       },
       child: Container(
@@ -24,25 +24,32 @@ class AdWidget extends StatelessWidget {
             children: <Widget>[
               Column(
                 mainAxisSize: MainAxisSize.min,
-
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Image.asset(
-                   _adModel.carModel.imageUrl[0],
+                    _adModel.carModel.imageUrl[0],
                     height: 124,
+                  ),
+                  SizedBox(
+                    height: 8,
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Icon(FontAwesomeIcons.rupeeSign,size: 16,color: Colors.grey,),
+                      Icon(
+                        FontAwesomeIcons.rupeeSign,
+                        size: 16,
+                        color: Colors.grey,
+                      ),
                       Text(
-                       "${_adModel.carModel.price}" ,
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        "${_adModel.carModel.price}",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w500),
                       ),
                       Spacer(),
                       Text(
-                        "${_adModel.carModel.fuelType==FuelType.DIESEL?"Diesel":"Petrol"}" ,
+                        "${_adModel.carModel.fuelType == FuelType.DIESEL ? "Diesel" : "Petrol"}",
                         style: TextStyle(fontSize: 14),
                       ),
                     ],
@@ -51,24 +58,30 @@ class AdWidget extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                       )),
-                      SizedBox(height: 16,),
-                         Row(
-                           children: <Widget>[
-                             Icon(Icons.location_on),
-                             Text(_adModel.location,
-                      style: TextStyle(
-                        fontSize: 16,
-                      )),
-                           ],
-                         ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.location_on),
+                      Text(_adModel.location,
+                          style: TextStyle(
+                            fontSize: 16,
+                          )),
+                    ],
+                  ),
                 ],
               ),
               Positioned(
                 top: 0,
                 right: 0,
-                child: IconButton(icon: Icon(Icons.favorite,color: Colors.white,),onPressed: (){
-
-                },),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.favorite,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {},
+                ),
               )
             ],
           )),

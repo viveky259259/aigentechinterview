@@ -1,7 +1,5 @@
 import 'package:aigen_tech_test/dashboard/dashboard.ui.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 class LoginUI extends StatefulWidget {
   @override
@@ -11,28 +9,30 @@ class LoginUI extends StatefulWidget {
 class _LoginUIState extends State<LoginUI> {
   TextEditingController _emailController;
   TextEditingController _passwordController;
-String _testEmail="test@aigen.tech";
-String testPassword="AigenTech";
+  String _testEmail = "test@aigen.tech";
+  String testPassword = "AigenTech";
+
   @override
   void initState() {
     super.initState();
-    _emailController=TextEditingController()..text=_testEmail;
-    _passwordController=TextEditingController()..text=testPassword;
+    _emailController = TextEditingController()..text = _testEmail;
+    _passwordController = TextEditingController()..text = testPassword;
   }
 
   void gotoDashboard() {
-    if(_emailController.text.compareTo(_testEmail) != 0 && _passwordController.text.compareTo(testPassword)!=0){
-        showError();
-        return;
+    if (_emailController.text.compareTo(_testEmail) != 0 &&
+        _passwordController.text.compareTo(testPassword) != 0) {
+      showError();
+      return;
     }
 
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => DashBoardUi()));
   }
 
-void showError(){
-print("err");
-}
+  void showError() {
+    print("err");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +43,8 @@ print("err");
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
-mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-      
-         
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -65,7 +63,7 @@ mainAxisAlignment: MainAxisAlignment.center,
                       SizedBox(width: 16),
                       Expanded(
                         child: TextField(
-                          controller: _emailController,
+                            controller: _emailController,
                             decoration: InputDecoration(hintText: "Email")),
                       ),
                     ],
@@ -85,8 +83,8 @@ mainAxisAlignment: MainAxisAlignment.center,
                       SizedBox(width: 16),
                       Expanded(
                         child: TextField(
-                                  controller: _passwordController,
-                                  obscureText: true,
+                            controller: _passwordController,
+                            obscureText: true,
                             decoration: InputDecoration(hintText: "Password")),
                       ),
                     ],
@@ -110,8 +108,6 @@ mainAxisAlignment: MainAxisAlignment.center,
                   ),
                 ),
                 SizedBox(height: 16),
-          
-          
               ],
             ),
           )

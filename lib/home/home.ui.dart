@@ -1,6 +1,5 @@
-import 'package:aigen_tech_test/ad/ad.model.dart';
+import 'package:aigen_tech_test/ad/ad.create.ui.dart';
 import 'package:aigen_tech_test/ad/ad.ui.dart';
-import 'package:aigen_tech_test/interfaces/i.adui.helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -10,7 +9,6 @@ class HomeUi extends StatefulWidget {
 }
 
 class _HomeUiState extends State<HomeUi> {
-
   @override
   void initState() {
     super.initState();
@@ -26,9 +24,10 @@ class _HomeUiState extends State<HomeUi> {
           title: Text("Home"),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.sort),
+              icon: Icon(FontAwesomeIcons.plus),
               onPressed: () {
-
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AdCreateUI()));
               },
             )
           ],

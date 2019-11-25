@@ -9,7 +9,9 @@ class AdModel {
   String location;
   CarModel carModel;
   String mobileNum;
+  DateTime datePosted;
 
-  AdModel(this.id,this.name,this.description,this.carModel,this.location,this.mobileNum,{this.isFavorite=false,this.isSelf=false});
-
+  AdModel(this.id, this.name, this.description, this.carModel, this.mobileNum,
+      this.location,
+      {this.isFavorite = false, this.isSelf = false});
 }
