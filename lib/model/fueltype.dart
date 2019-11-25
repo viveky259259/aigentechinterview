@@ -1,5 +1,1 @@
-enum FuelType{
-  DIESEL,
-  PETROL
-
-}
+enum FuelType { DIESEL, PETROL }
