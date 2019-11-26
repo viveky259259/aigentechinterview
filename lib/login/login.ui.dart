@@ -1,4 +1,4 @@
-import 'package:aigen_tech_test/dashboard/dashboard.ui.dart';
+import 'package:aigen_tech_test/home/home.ui.dart';
 import 'package:flutter/material.dart';
 
 class LoginUI extends StatefulWidget {
@@ -9,6 +9,7 @@ class LoginUI extends StatefulWidget {
 class _LoginUIState extends State<LoginUI> {
   TextEditingController _emailController;
   TextEditingController _passwordController;
+
   String _testEmail = "test@aigen.tech";
   String testPassword = "AigenTech";
 
@@ -27,7 +28,7 @@ class _LoginUIState extends State<LoginUI> {
     }
 
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => DashBoardUi()));
+        .push(MaterialPageRoute(builder: (context) => HomeUi()));
   }
 
   void showError() {
