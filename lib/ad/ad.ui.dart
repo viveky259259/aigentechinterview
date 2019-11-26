@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:aigen_tech_test/ad/ad.model.dart';
 import 'package:aigen_tech_test/ad/ad.widget.dart';
+import 'package:aigen_tech_test/database/db.provider.dart';
 import 'package:aigen_tech_test/interfaces/i.adui.helper.dart';
 import 'package:aigen_tech_test/model/car.model.dart';
 import 'package:aigen_tech_test/model/fueltype.dart';
@@ -36,155 +39,164 @@ class _AdUiState extends State<AdUi> {
   }
 
   getAdList() async {
-    await Future.delayed(Duration(microseconds: 100));
     ads = List();
-    ads.add(AdModel(
-        1,
-        "car",
-        "This is car",
-        CarModel(
-            4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.PETROL,
-            120000,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black",
-            4,
-            false),
-        "80808080",
-        "Boriwali (East)",
-        isSelf: widget.isSelf));
-    ads.add(AdModel(
-        1,
-        "car",
-        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
-        CarModel(
-            4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.DIESEL,
-            120000,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black",
-            4,
-            false),
-        "80808080",
-        "Boriwali (East)",
-        isSelf: widget.isSelf));
-    ads.add(AdModel(
-        1,
-        "car",
-        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
-        CarModel(
-            4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.DIESEL,
-            120000,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black",
-            4,
-            false),
-        "80808080",
-        "Boriwali (East)",
-        isSelf: widget.isSelf));
-    ads.add(AdModel(
-        1,
-        "car",
-        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
-        CarModel(
-            4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.PETROL,
-            120000,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black",
-            4,
-            false),
-        "80808080",
-        "Boriwali (East)",
-        isSelf: widget.isSelf));
-    ads.add(AdModel(
-        1,
-        "car",
-        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
-        CarModel(
-            4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.DIESEL,
-            120000,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black",
-            4,
-            false),
-        "80808080",
-        "Boriwali (East)",
-        isSelf: widget.isSelf));
-    ads.add(AdModel(
-        1,
-        "car",
-        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
-        CarModel(
-            4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.DIESEL,
-            120000,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black",
-            4,
-            false),
-        "80808080",
-        "Boriwali (East)",
-        isSelf: widget.isSelf));
-    ads.add(AdModel(
-        1,
-        "car",
-        "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
-        CarModel(
-            4,
-            "maruti",
-            "8100D",
-            2010,
-            2011,
-            1200,
-            24.2,
-            FuelType.PETROL,
-            120000,
-            ["assets/images/car1.jpg", "assets/images/car1.jpg"],
-            "black",
-            4,
-            false),
-        "80808080",
-        "Boriwali (East)",
-        isSelf: widget.isSelf));
+    if (widget.isSelf) {
+      List<AdModel> list = await DatabaseProvider.db.getAds();
+      if (list != null) {
+        ads.addAll(list);
+      }
+    } else {
+      await Future.delayed(Duration(microseconds: 100));
+      ads = List();
+      ads.add(AdModel(
+          1,
+          "car",
+          "This is car",
+          CarModel(
+              4,
+              "maruti",
+              "8100D",
+              2010,
+              2011,
+              1200,
+              24.2,
+              FuelType.PETROL,
+              120000,
+              ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+              "black",
+              4,
+              false),
+          "80808080",
+          "Boriwali (East)",
+          isSelf: widget.isSelf));
+      ads.add(AdModel(
+          1,
+          "car",
+          "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
+          CarModel(
+              4,
+              "maruti",
+              "8100D",
+              2010,
+              2011,
+              1200,
+              24.2,
+              FuelType.DIESEL,
+              120000,
+              ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+              "black",
+              4,
+              false),
+          "80808080",
+          "Boriwali (East)",
+          isSelf: widget.isSelf));
+      ads.add(AdModel(
+          1,
+          "car",
+          "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
+          CarModel(
+              4,
+              "maruti",
+              "8100D",
+              2010,
+              2011,
+              1200,
+              24.2,
+              FuelType.DIESEL,
+              120000,
+              ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+              "black",
+              4,
+              false),
+          "80808080",
+          "Boriwali (East)",
+          isSelf: widget.isSelf));
+      ads.add(AdModel(
+          1,
+          "car",
+          "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
+          CarModel(
+              4,
+              "maruti",
+              "8100D",
+              2010,
+              2011,
+              1200,
+              24.2,
+              FuelType.PETROL,
+              120000,
+              ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+              "black",
+              4,
+              false),
+          "80808080",
+          "Boriwali (East)",
+          isSelf: widget.isSelf));
+      ads.add(AdModel(
+          1,
+          "car",
+          "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
+          CarModel(
+              4,
+              "maruti",
+              "8100D",
+              2010,
+              2011,
+              1200,
+              24.2,
+              FuelType.DIESEL,
+              120000,
+              ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+              "black",
+              4,
+              false),
+          "80808080",
+          "Boriwali (East)",
+          isSelf: widget.isSelf));
+      ads.add(AdModel(
+          1,
+          "car",
+          "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
+          CarModel(
+              4,
+              "maruti",
+              "8100D",
+              2010,
+              2011,
+              1200,
+              24.2,
+              FuelType.DIESEL,
+              120000,
+              ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+              "black",
+              4,
+              false),
+          "80808080",
+          "Boriwali (East)",
+          isSelf: widget.isSelf));
+      ads.add(AdModel(
+          1,
+          "car",
+          "97 Checkpoints have been inspected on all  Assured Cars. This 2012 Audi A4 3.0 TDI Quattro Technology is in excellent condition. This Diesel car has been driven around 55762 KMs. The car been previously owned by Two individuals We offer Hassle-free Paper Transfer & RTO Services on every  Assured car. We can also offer great EMI options to keep the car pocket-friendly. Contact us to know more.",
+          CarModel(
+              4,
+              "maruti",
+              "8100D",
+              2010,
+              2011,
+              1200,
+              24.2,
+              FuelType.PETROL,
+              120000,
+              ["assets/images/car1.jpg", "assets/images/car1.jpg"],
+              "black",
+              4,
+              false),
+          "80808080",
+          "Boriwali (East)",
+          isSelf: widget.isSelf));
+    }
+
     setState(() {
       isLoading = false;
     });
@@ -211,6 +223,7 @@ class _AdUiState extends State<AdUi> {
   }
 
   onItemClick(AdModel adModel) {
+    print(adModel.toDBMap());
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => AdDetailsUi(adModel)));
   }
@@ -277,6 +290,7 @@ class _AdUiState extends State<AdUi> {
                     itemCount: ads.length,
                     itemBuilder: (context, index) {
                       AdModel adModel = ads[index];
+                      checkImage(adModel);
                       return AdWidget(adModel, onItemClick);
                     },
                   ),
@@ -284,5 +298,10 @@ class _AdUiState extends State<AdUi> {
               ),
             ],
           );
+  }
+
+  void checkImage(AdModel adModel) {
+    File a = File(adModel.carModel.images[0]);
+    print(a);
   }
 }

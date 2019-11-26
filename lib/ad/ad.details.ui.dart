@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aigen_tech_test/ad/ad.model.dart';
 import 'package:aigen_tech_test/model/fueltype.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -152,13 +154,23 @@ class _AdDetailsUiState extends State<AdDetailsUi> {
               height: 200.0,
               autoPlay: true,
               autoPlayInterval: Duration(seconds: 2),
-              items: widget._adModel.carModel.imageUrl.map((i) {
+              items: widget._adModel.carModel.images.map((i) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
+
+                        ///storage/self/primary/Android/data/com.example.aigen_tech_test/files/1574776433108Screenshot_20191106-144447.png
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 5.0),
-                        child: Image.asset(i));
+                        child: widget._adModel.isSelf
+                            ? Image.file(File((i
+                                .replaceFirst(
+                                    "emulated/0",
+                                    "s"
+                                        "elf/primary")
+                                .trim()
+                                .toString())))
+                            : Image.asset(i));
                   },
                 );
               }).toList(),
@@ -317,7 +329,7 @@ class _AdDetailsUiState extends State<AdDetailsUi> {
                         width: 8,
                       ),
                       Text(
-                        "${widget._adModel.carModel.numberOfDoors}",
+                        "${widget._adModel.carModel.doorCount}",
                         style: TextStyle(fontSize: 16),
                       ),
                     ],
@@ -385,17 +397,28 @@ class _AdDetailsUiState extends State<AdDetailsUi> {
                   ),
                   RaisedButton(
                     padding: EdgeInsets.all(8),
-                    color: Colors.blue,
-                    onPressed: () {},
+                    color:
+                        widget._adModel.isFavorite ? Colors.grey : Colors.blue,
+                    onPressed: () {
+                      widget._adModel.isFavorite = !widget._adModel.isFavorite;
+                      setState(() {});
+                    },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.favorite_border, color: Colors.white),
+                        Icon(
+                            widget._adModel.isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: Colors.white),
                         SizedBox(
                           width: 8,
                         ),
                         Text(
-                          "Mark Favorite",
+                          widget._adModel.isFavorite
+                              ? "Remove favorite"
+                              : "Add "
+                                  "favorite",
                           style: TextStyle(color: Colors.white),
                         ),
                       ],

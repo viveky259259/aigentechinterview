@@ -1,3 +1,4 @@
+import 'package:aigen_tech_test/delegate/list.delegate.dart';
 import 'package:aigen_tech_test/model/fueltype.dart';
 
 class CarModel {
@@ -7,12 +8,12 @@ class CarModel {
   int manufacturingYear;
   int buyYear;
   double distanceTravelled;
-  double milege;
+  double mileage;
   FuelType fuelType;
   double price;
-  List<String> imageUrl;
+  List<String> images;
   String color;
-  int numberOfDoors;
+  int doorCount;
   bool isAcAvailable;
 
   CarModel(
@@ -22,11 +23,46 @@ class CarModel {
       this.manufacturingYear,
       this.buyYear,
       this.distanceTravelled,
-      this.milege,
+      this.mileage,
       this.fuelType,
       this.price,
-      this.imageUrl,
+      this.images,
       this.color,
-      this.numberOfDoors,
+      this.doorCount,
       this.isAcAvailable);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      "brand": brand,
+      "model": model,
+      "color": color,
+      "fuel_type": (fuelType == FuelType.DIESEL) ? 0 : 1,
+      "manufacture_year": manufacturingYear,
+      "buy_year": buyYear,
+      "seat_count": seatCount,
+      "door_count": doorCount,
+      "mileage": mileage,
+      "distance_travelled": distanceTravelled,
+      "images": ListDelegate.getStringFromList(images),
+      "ac": isAcAvailable ? 1 : 0,
+      "price": price
+    };
+  }
+
+  factory CarModel.getCarFromMap(Map<String, dynamic> map) {
+    return CarModel(
+        map["seat_count"],
+        map["brand"],
+        map["model"],
+        map["manufacture_year"],
+        map["buy_year"],
+        map["distance_travelled"],
+        map["mileage"],
+        map["fuel_type"] == 0 ? FuelType.DIESEL : FuelType.PETROL,
+        map["price"],
+        ListDelegate.getListFromCSV(map["images"]),
+        map["color"],
+        map["door_count"],
+        map["ac"] == 0 ? false : true);
+  }
 }
